@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    CharacterController characterController;
+    Rigidbody rigidBody;
     Animator animator;
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
 
     void Start(){
-        characterController = GetComponent<CharacterController>();
+        rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
@@ -43,12 +43,9 @@ public class Player : MonoBehaviour
             }
         
 
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
-        moveDirection.y -= gravity * Time.deltaTime;
-
+        
         // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
+        //characterController.Move(moveDirection * Time.deltaTime);
+        rigidBody.AddForce(moveDirection);
     }
 }
