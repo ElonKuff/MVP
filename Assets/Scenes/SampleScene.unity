@@ -120,6 +120,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &128799358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128799359}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &128799359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128799358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.8631315, y: -6.4460206, z: -22.064768}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419922991
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 419922991}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 22.951, y: 22.951, z: 22.951}
+  m_LocalScale: {x: 1.3454794, y: 1.3454794, z: 1.3454794}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -413,6 +443,7 @@ MonoBehaviour:
   speed: 6
   jumpSpeed: 8
   gravity: 20
+  deadzone: 0.3
 --- !u!143 &1234909828
 CharacterController:
   m_ObjectHideFlags: 0
@@ -443,11 +474,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: armory guy
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 6ec01c6fca418e844be85b55a7a96504,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9e6ff9c852a6d8747b2b9dd006e9fafb, type: 2}
     - target: {fileID: -4216859302048453862, guid: 6ec01c6fca418e844be85b55a7a96504,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -456,7 +482,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6ec01c6fca418e844be85b55a7a96504,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6ec01c6fca418e844be85b55a7a96504,
         type: 3}
@@ -503,5 +529,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 6ec01c6fca418e844be85b55a7a96504,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9e6ff9c852a6d8747b2b9dd006e9fafb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ec01c6fca418e844be85b55a7a96504, type: 3}

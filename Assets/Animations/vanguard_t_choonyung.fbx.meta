@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d58ff6bf6eb042f4db44023e48c5fcf3
+guid: 6ec01c6fca418e844be85b55a7a96504
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
@@ -101,6 +101,9 @@ ModelImporter:
   referencedClips:
   - f38028c008900324791c66947a5e813c
   - 65752cb91e930b14da8a2f823adb68df
+  - 7563b86e892ce874eaccf163ca48b6ce
+  - 0a506a95425a6f54ea78293201260b76
+  - 879bd707be2449f45aec61db1c302552
   - e81a914f22b8d714285af8502b6f423a
   - 2fbfe2b4adbb0aa42a0378805f710d26
   - 12ef105e8821385498ddce7347ba1646
