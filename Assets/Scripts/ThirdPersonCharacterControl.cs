@@ -36,7 +36,7 @@ public class ThirdPersonCharacterControl : MonoBehaviour
         if(Mathf.Abs(Input.GetAxis("Horizontal"))>deadZone||Mathf.Abs(Input.GetAxis("Vertical"))>deadZone){
             transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime, Space.Self);
         }
-        
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     void PlayerInput(){
@@ -48,12 +48,13 @@ public class ThirdPersonCharacterControl : MonoBehaviour
         }
         if(IsGrounded()&&Input.GetButtonDown("Jump")){
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("hasJumped");
         }
     }
 
     private bool IsGrounded(){
         isGrounded = Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f);
-        animator.SetBool("isGrounded", isGrounded);
+        
         return isGrounded;
     }
     
