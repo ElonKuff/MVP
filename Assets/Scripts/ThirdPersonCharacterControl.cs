@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdPersonCharacterControl : MonoBehaviour
 {
     public float movementSpeed = 20f;
-    public float deadZone = 0.2f;
+    public float deadZone = 0.4f;
     private Animator animator;
 
     public LayerMask groundLayer;
@@ -35,6 +35,8 @@ public class ThirdPersonCharacterControl : MonoBehaviour
 
         if(Mathf.Abs(Input.GetAxis("Horizontal"))>deadZone||Mathf.Abs(Input.GetAxis("Vertical"))>deadZone){
             transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime, Space.Self);
+            animator.SetFloat("xAxis", Input.GetAxis("Horizontal"));
+            animator.SetFloat("yAxis", Input.GetAxis("Vertical"));
         }
         animator.SetBool("isGrounded", isGrounded);
     }
