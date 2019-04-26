@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class ThirdPersonCharacterControl : MonoBehaviour
 {
-    public float Speed;
+    public float movementSpeed = 20f;
+    public float deadZone = 0.2f;
+    private Animator animator;
+
+    void Start(){
+        animator = GetComponent<Animator>();
+    }
 
 	void Update ()
     {
         PlayerMovement();
+        PlayerInput();
     }
 
     void PlayerMovement()
     {
-        float hor = Input.GetAxis("Horizontal");
-        float ver = Input.GetAxis("Vertical");
-        Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
-        transform.Translate(playerMovement, Space.Self);
+
+        if(Mathf.Abs(Input.GetAxis("Horizontal"))>deadZone||Mathf.Abs(Input.GetAxis("Vertical"))>deadZone){
+            transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime, Space.Self);
+        }
+        
+    }
+
+    void PlayerInput(){
+        if(Input.GetButtonDown("HighHit")){
+            animator.SetTrigger("highHit");
+        }
+        if(Input.GetButtonDown("Kick")){
+            animator.SetTrigger("kickHit");
+        }
     }
 }
