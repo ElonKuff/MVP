@@ -8,8 +8,20 @@ public class ThirdPersonCharacterControl : MonoBehaviour
     public float deadZone = 0.2f;
     private Animator animator;
 
+    public LayerMask groundLayer;
+    public float jumpForce = 7;
+
+    public Rigidbody rigidBody;
+    private CapsuleCollider collider;
+    public bool isGrounded;
+
+    public float distToGround;
+
     void Start(){
         animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody>();
+        collider = GetComponent<CapsuleCollider>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
 	void Update ()
@@ -34,5 +46,15 @@ public class ThirdPersonCharacterControl : MonoBehaviour
         if(Input.GetButtonDown("Kick")){
             animator.SetTrigger("kickHit");
         }
+        if(IsGrounded()&&Input.GetButtonDown("Jump")){
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
+
+    private bool IsGrounded(){
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f);
+        animator.SetBool("isGrounded", isGrounded);
+        return isGrounded;
+    }
+    
 }
