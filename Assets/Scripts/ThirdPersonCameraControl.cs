@@ -10,6 +10,7 @@ public class ThirdPersonCameraControl : MonoBehaviour
 
     public Transform Obstruction;
     float zoomSpeed = 2f;
+
     
     void Start()
     {
@@ -20,10 +21,13 @@ public class ThirdPersonCameraControl : MonoBehaviour
 
     private void LateUpdate()
     {
-        CamControl();
-        ViewObstructed();
+        //CamControl();
+        //ViewObstructed();
     }
     
+    void Update(){
+
+    }
 
     void CamControl()
     {

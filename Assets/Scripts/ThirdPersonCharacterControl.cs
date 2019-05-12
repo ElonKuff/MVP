@@ -17,6 +17,8 @@ public class ThirdPersonCharacterControl : MonoBehaviour
 
     public float distToGround;
 
+    public Transform enemy = null;
+
     void Start(){
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
@@ -28,12 +30,16 @@ public class ThirdPersonCharacterControl : MonoBehaviour
     {
         PlayerMovement();
         PlayerInput();
+        transform.LookAt(enemy);
     }
 
     void PlayerMovement()
     {
 
-        if(Mathf.Abs(Input.GetAxis("Horizontal"))>deadZone||Mathf.Abs(Input.GetAxis("Vertical"))>deadZone){
+        if(IsGrounded()&&Input.GetButtonDown("Leap")){
+            rigidBody.AddForce(((enemy.transform.position - this.transform.position) + Vector3.up * jumpForce) * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("hasJumped");
+        } else if(IsGrounded()&&(Mathf.Abs(Input.GetAxis("Horizontal"))>deadZone||Mathf.Abs(Input.GetAxis("Vertical"))>deadZone)){
             transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime, Space.Self);
             animator.SetFloat("xAxis", Input.GetAxis("Horizontal"));
             animator.SetFloat("yAxis", Input.GetAxis("Vertical"));
@@ -48,16 +54,22 @@ public class ThirdPersonCharacterControl : MonoBehaviour
         if(Input.GetButtonDown("Kick")){
             animator.SetTrigger("kickHit");
         }
-        if(IsGrounded()&&Input.GetButtonDown("Jump")){
-            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetTrigger("hasJumped");
-        }
+        
     }
 
     private bool IsGrounded(){
         isGrounded = Physics.Raycast(transform.position, Vector3.down, distToGround + 0.1f);
         
         return isGrounded;
+    }
+
+    void OnCollisionEnter(Collision collision){
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+        //if (collision.relativeVelocity.magnitude > 2)
+            //audioSource.Play();
     }
     
 }
