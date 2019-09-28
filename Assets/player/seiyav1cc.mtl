@@ -1,0 +1,24 @@
+# Blender3D MTL File: 
+# Material Count: 2
+newmtl cloth_gold-11-0-0.001_cuerpo
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.539608 0.145569 0.037647
+Ks 0.250000 0.250000 0.250000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd seiyav1cc.png
+
+
+newmtl ojo_2.dds
+Ns 92.156863
+Ka 0.000000 0.000000 0.000000
+Kd 0.421647 0.486902 0.017569
+Ks 0.250000 0.250000 0.250000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd seiyaojo.png
+
+
